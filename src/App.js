@@ -49,7 +49,7 @@ const Portfolio = () => {
         <footer className="text-center">
           <div className="flex justify-center space-x-4">
             <a href="https://github.com/yourusername" className="text-gray-600 hover:text-gray-900">
-            <GithubIcon size={24} />
+              <GithubIcon size={24} />
             </a>
             <a href="https://linkedin.com/in/yourprofile" className="text-gray-600 hover:text-gray-900">
               <LinkedinIcon size={24} />
