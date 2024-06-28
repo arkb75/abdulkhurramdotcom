@@ -38,8 +38,13 @@ const Portfolio = () => {
           <section className="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-105 transition-transform duration-300">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">Projects</h2>
             <div className="space-y-4">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h3 className="text-xl font-medium text-gray-900">Amazon Marketplace Analytic Software</h3>
+              <div className="bg-gray-50 p-4 rounded-lg relative">
+                <div className="flex justify-between items-start">
+                  <h3 className="text-xl font-medium text-gray-900">Amazon Marketplace Analytic Software</h3>
+                  <a href="https://github.com/your-repo-link" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">
+                    <GithubIcon size={20} />
+                  </a>
+                </div>
                 <p className="text-gray-700">Engineered an Amazon Marketplace tool, enhancing seller operational efficiency by 35%. Implemented an algorithm predicting ASIN trends, leading to a 50% reduction in overstock. Enabled multi-format data integration, including SQL and JSON, improving data retrieval times by 40%.</p>
               </div>
               <div className="bg-gray-50 p-4 rounded-lg">
