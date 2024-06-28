@@ -41,7 +41,7 @@ const Portfolio = () => {
               <div className="bg-gray-50 p-4 rounded-lg relative">
                 <div className="flex justify-between items-start">
                   <h3 className="text-xl font-medium text-gray-900">Amazon Marketplace Analytic Software</h3>
-                  <a href="https://github.com/your-repo-link" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">
+                  <a href="https://github.com/arkb75/Amazon-Marketplace-Analytic-Software" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">
                     <GithubIcon size={20} />
                   </a>
                 </div>
