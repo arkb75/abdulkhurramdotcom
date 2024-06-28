@@ -29,7 +29,7 @@ const Portfolio = () => {
 
         <main className="space-y-12">
           <section className="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-105 transition-transform duration-300">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">About Me (Test)</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">About Me</h2>
             <p className="text-gray-700">
               As a Computer Science student at the University of British Columbia, I’m fueling my passion for technology through both academic rigor and hands-on experience. Driven by curiosity and a knack for problem-solving, I am actively seeking internship opportunities where I can contribute and further hone my skills in software development and fintech innovation.
             </p>
