@@ -18,7 +18,7 @@ const Portfolio = () => {
             <a href="https://linkedin.com/in/arkb" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">
               <LinkedinIcon size={28} />
             </a>
-            <a href="mailto:rafaykhurram@live.com" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">
+            <a href="mailto:rafay@abdulkhurram.com" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">
               <MailIcon size={28} />
             </a>
             <a href="/CV.pdf" className="text-gray-600 hover:text-gray-900 transition-colors duration-300" target="_blank" rel="noopener noreferrer">
