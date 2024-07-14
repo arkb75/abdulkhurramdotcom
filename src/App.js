@@ -15,7 +15,7 @@ const Portfolio = () => {
             <a href="https://github.com/arkb75" title="Github" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">
               <GithubIcon size={28} />
             </a>
-            <a href="https://linkedin.com/in/arkb" title="Linkedin" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">
+            <a href="https://linkedin.com/in/abdulkhurram" title="Linkedin" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">
               <LinkedinIcon size={28} />
             </a>
             <a href="mailto:rafay@abdulkhurram.com" title="Email" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">
