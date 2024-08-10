@@ -49,6 +49,19 @@ const Portfolio = () => {
                   Developed a home-building platform using Vue.js and Vite for fast, responsive frontend development. Designed an intuitive UI/UX guiding users through planning, budgeting, and project management. Created detailed cost breakdowns and structured workflows to enhance transparency. Integrated project tracking for real-time updates and accountability. Collaborated with vetted service providers for competitive pricing and reliability. Implemented efficient dispute resolution mechanisms for smooth user interactions.
                 </p>
               </div>
+
+              <div className="bg-gray-50 p-4 rounded-lg relative">
+                <div className="flex justify-between items-start">
+                  <h3 className="text-xl font-medium text-gray-900">Real Estate Management Platform</h3>
+                  <a href="https://github.com/arkb75/RealEstate" className="text-gray-600 hover:text-gray-900 transition-colors duration-300">
+                    <GithubIcon size={20} />
+                  </a>
+                </div>
+                <p className="text-gray-700">
+                  Developed a real estate management application using HTML, CSS, JavaScript, Express.js, and Node.js. Designed and implemented a SQL database with OracleDB to model users, properties, and transactions. Created and managed API endpoints to efficiently handle user requests and data interactions. Applied ISA relationships in OracleDB to specialize property types like Houses and Condos. Optimized the platform with asynchronous processing for seamless multi-user interactions.
+                </p>
+              </div>
+
               <div className="bg-gray-50 p-4 rounded-lg relative">
                 <div className="flex justify-between items-start">
                   <h3 className="text-xl font-medium text-gray-900">Amazon Marketplace Analytic Software</h3>
@@ -58,12 +71,6 @@ const Portfolio = () => {
                 </div>
                 <p className="text-gray-700">
                   Engineered an Amazon Marketplace tool, enhancing seller operational efficiency by 35%. Implemented an algorithm predicting ASIN trends, leading to a 50% reduction in overstock. Enabled multi-format data integration, including SQL and JSON, improving data retrieval times by 40%.
-                </p>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h3 className="text-xl font-medium text-gray-900">High-Performance Media Distribution Platform</h3>
-                <p className="text-gray-700">
-                  Orchestrated an Ombi-integrated media server, automating over 1,000 weekly metadata-rich downloads using advanced scripting. Leveraged DHT protocols to index 10,000+ peer-to-peer assets, facilitating Radarr and Sonarr for automated content retrieval. Administered a robust NGINX server architecture, seamlessly streaming a 50 TB digital Blu-ray archive to 150+ users. Engineered multi-user profile management for 200+ accounts, ensuring optimal user engagement and platform reliability. Enhanced system resilience with SSH-powered Raspberry Pi commands, slashing downtime by 90% through proactive network management.
                 </p>
               </div>
             </div>
@@ -83,10 +90,13 @@ const Portfolio = () => {
               <li className="bg-gray-100 rounded-full px-4 py-2 text-center">HTML</li>
               <li className="bg-gray-100 rounded-full px-4 py-2 text-center">CSS</li>
               <li className="bg-gray-100 rounded-full px-4 py-2 text-center">Node.js</li>
+              <li className="bg-gray-100 rounded-full px-4 py-2 text-center">Express.js</li>
+              <li className="bg-gray-100 rounded-full px-4 py-2 text-center">OracleDB</li>
               <li className="bg-gray-100 rounded-full px-4 py-2 text-center">Git</li>
               <li className="bg-gray-100 rounded-full px-4 py-2 text-center">JUnit</li>
               <li className="bg-gray-100 rounded-full px-4 py-2 text-center">unRAID</li>
               <li className="bg-gray-100 rounded-full px-4 py-2 text-center">Swing</li>
+              <li className="bg-gray-100 rounded-full px-4 py-2 text-center">Responsive Design</li>
             </ul>
           </section>
         </main>
