@@ -73,6 +73,13 @@ const Portfolio = () => {
                   Engineered an Amazon Marketplace tool, enhancing seller operational efficiency by 35%. Implemented an algorithm predicting ASIN trends, leading to a 50% reduction in overstock. Enabled multi-format data integration, including SQL and JSON, improving data retrieval times by 40%.
                 </p>
               </div>
+
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h3 className="text-xl font-medium text-gray-900">High-Performance Media Distribution Platform</h3>
+                <p className="text-gray-700">
+                  Orchestrated an Ombi-integrated media server, automating over 1,000 weekly metadata-rich downloads using advanced scripting. Leveraged DHT protocols to index 10,000+ peer-to-peer assets, facilitating Radarr and Sonarr for automated content retrieval. Administered a robust NGINX server architecture, seamlessly streaming a 50 TB digital Blu-ray archive to 150+ users. Engineered multi-user profile management for 200+ accounts, ensuring optimal user engagement and platform reliability. Enhanced system resilience with SSH-powered Raspberry Pi commands, slashing downtime by 90% through proactive network management.
+                  </p>
+              </div>
             </div>
           </section>
 
@@ -96,7 +103,6 @@ const Portfolio = () => {
               <li className="bg-gray-100 rounded-full px-4 py-2 text-center">JUnit</li>
               <li className="bg-gray-100 rounded-full px-4 py-2 text-center">unRAID</li>
               <li className="bg-gray-100 rounded-full px-4 py-2 text-center">Swing</li>
-              <li className="bg-gray-100 rounded-full px-4 py-2 text-center">Responsive Design</li>
             </ul>
           </section>
         </main>
