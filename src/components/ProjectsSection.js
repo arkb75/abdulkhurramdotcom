@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo } from 'react'; // Removed useRef
 import { useSelector, useDispatch } from 'react-redux';
 import ProjectCard from './ProjectCard';
 import { setActiveSkills } from '../redux/actions';
