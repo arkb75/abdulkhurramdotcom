@@ -7,6 +7,8 @@ const AboutMeSection = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const currentRef = sectionRef.current; // Copy the ref to a variable
+
     const observerOptions = {
       root: null,
       rootMargin: '0px',
@@ -24,17 +26,17 @@ const AboutMeSection = () => {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     // Cleanup
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
-  }, [dispatch]);
+  }, [dispatch]); // No need to include sectionRef in dependencies
 
   return (
     <section
