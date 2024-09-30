@@ -44,7 +44,7 @@ const App = () => {
       />
       {/* Toggle Button for smaller screens */}
       <button
-        className="lg:hidden fixed bottom-4 right-4 bg-blue-600 text-white p-3 rounded-full shadow-lg"
+        className="lg:hidden fixed bottom-4 right-4 bg-white text-black p-3 rounded-full shadow-lg z-50"
         onClick={() => setIsSkillsOpen(true)}
       >
         <MenuIcon size={24} />

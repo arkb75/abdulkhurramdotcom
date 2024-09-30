@@ -103,8 +103,8 @@ const skillToProjects = {
       {/* For large screens, show the fixed SkillsSection */}
       <div
         className="hidden lg:block fixed top-20 right-4 w-64 bg-white rounded-2xl shadow-lg p-4
-        transform transition-transform duration-300 overflow-y-auto max-h-screen"
-        >
+        transform transition-transform duration-300 overflow-y-auto max-h-screen z-40"
+      >
         <h2 className="text-xl font-semibold text-gray-900 mb-4">Skills</h2>
         {Object.entries(skills).map(([category, skillsInCategory]) => (
           <div key={category} className="mb-4">
@@ -129,7 +129,7 @@ const skillToProjects = {
       {/* For small screens, show the overlay when isOpen is true */}
       {isOpen && (
         <div className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-50">
-          <div className="fixed inset-y-0 right-0 w-64 bg-white shadow-lg p-4 overflow-y-auto">
+          <div className="fixed inset-y-0 right-0 w-64 bg-white shadow-lg p-4 overflow-y-auto z-50">
             {/* Close button */}
             <button
               className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"

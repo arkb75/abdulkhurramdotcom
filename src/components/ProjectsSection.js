@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ProjectCard from './ProjectCard';
 import { setActiveSkills } from '../redux/actions';
@@ -26,12 +26,21 @@ const ProjectsSection = ({ projectRefs }) => {
         githubLink: 'https://github.com/arkb75/RealEstate',
         description:
           'Developed a platform for seamless real estate transactions and property management, integrating service providers like inspectors and contractors. Designed and implemented a SQL database with OracleDB to model classes, utilizing ISA relationships for efficient querying and data manipulation. Created and managed API endpoints with Express.js, ensuring asynchronous processing to handle multi-user requests and streamline property listing management.',
-        skills: ['JavaScript', 'Node.js', 'Express.js', 'SQL', 'OracleDB', 'HTML/CSS', 'Git'],
+        skills: [
+          'JavaScript',
+          'Node.js',
+          'Express.js',
+          'SQL',
+          'OracleDB',
+          'HTML/CSS',
+          'Git',
+        ],
       },
       {
         ref: projectRefs.amazonRef,
         title: 'Amazon Marketplace Analytic Software',
-        githubLink: 'https://github.com/arkb75/Amazon-Marketplace-Analytic-Software',
+        githubLink:
+          'https://github.com/arkb75/Amazon-Marketplace-Analytic-Software',
         description:
           'Engineered an Amazon Marketplace tool using Java, enhancing seller operational efficiency by 35%. Implemented an algorithm predicting ASIN trends, leading to a 50% reduction in overstock. Enabled multi-format data integration, including SQL and JSON, improving data retrieval times by 40%.',
         skills: ['Java', 'SQL', 'Git'],
@@ -51,13 +60,15 @@ const ProjectsSection = ({ projectRefs }) => {
   useEffect(() => {
     const options = {
       root: null,
-      rootMargin: '-50% 0px', // Trigger when the section is halfway in view
+      rootMargin: '-50% 0px',
       threshold: 0,
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        const project = projects.find((proj) => proj.ref.current === entry.target);
+        const project = projects.find(
+          (proj) => proj.ref.current === entry.target
+        );
         if (entry.isIntersecting && project) {
           // When the project is in view, update active skills
           dispatch(setActiveSkills(project.skills));
@@ -65,20 +76,23 @@ const ProjectsSection = ({ projectRefs }) => {
       });
     }, options);
 
-    // Observe each project section
+    // Observe each project section after ensuring refs are assigned
     projects.forEach((project) => {
       if (project.ref.current) {
         observer.observe(project.ref.current);
+      } else {
+        // Wait for the next event loop tick if refs are not yet assigned
+        setTimeout(() => {
+          if (project.ref.current) {
+            observer.observe(project.ref.current);
+          }
+        }, 0);
       }
     });
 
     // Cleanup
     return () => {
-      projects.forEach((project) => {
-        if (project.ref.current) {
-          observer.unobserve(project.ref.current);
-        }
-      });
+      observer.disconnect();
     };
   }, [dispatch, projects]);
 
