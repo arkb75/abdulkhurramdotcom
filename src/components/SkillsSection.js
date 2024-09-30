@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { highlightProject, glowPageBorder } from '../redux/actions';
+// SkillsSection.js
 
-const SkillsSection = ({ projectRefs }) => {
-  const [selectedCategory, setSelectedCategory] = useState('Languages');
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { highlightProject, glowPageBorder } from '../redux/actions';
+import { XIcon } from 'lucide-react'; // Import close icon
+
+const SkillsSection = ({ projectRefs, isOpen, onClose }) => {
   const dispatch = useDispatch();
+
+  // Get the active skills from Redux
+  const activeSkills = useSelector((state) => state.skills.activeSkills);
 
   // Skill categories and their respective skills
   const skills = {
@@ -24,10 +29,8 @@ const SkillsSection = ({ projectRefs }) => {
     Testing: ['Unit', 'Integration', 'End-to-End', 'Smoke', 'A/B'],
   };
 
-  const categories = Object.keys(skills);
-
-  // Mapping of skills to projects
-  const skillToProjects = {
+// Mapping of skills to projects (for click functionality)
+const skillToProjects = {
     Java: [projectRefs.amazonRef],
     Python: [projectRefs.constructifyRef],
     JavaScript: [projectRefs.constructifyRef, projectRefs.realEstateRef],
@@ -52,7 +55,7 @@ const SkillsSection = ({ projectRefs }) => {
     MySQL: [],
     JUnit: [],
     RDBMS: [projectRefs.realEstateRef],
-    Unit: [projectRefs.amazonRef],
+    Unit: [],
     Integration: [],
     'End-to-End': [],
     Smoke: [],
@@ -96,35 +99,72 @@ const SkillsSection = ({ projectRefs }) => {
   };
 
   return (
-    <section className="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-105 transition-transform duration-300">
-      <h2 className="text-2xl font-semibold text-gray-900 mb-6">Skills</h2>
-      <div className="flex justify-center flex-wrap gap-4 mb-6">
-        {categories.map((category) => (
-          <button
-            key={category}
-            onClick={() => setSelectedCategory(category)}
-            className={`px-4 py-2 rounded-full text-sm font-medium ${
-              selectedCategory === category
-                ? 'bg-gray-700 text-white'
-                : 'bg-gray-200 text-gray-700'
-            } hover:bg-gray-300 transition-colors duration-300`}
-          >
-            {category}
-          </button>
+    <>
+      {/* For large screens, show the fixed SkillsSection */}
+      <div
+        className="hidden lg:block fixed top-20 right-4 w-64 bg-white rounded-2xl shadow-lg p-4
+        transform transition-transform duration-300 overflow-y-auto max-h-screen"
+        >
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Skills</h2>
+        {Object.entries(skills).map(([category, skillsInCategory]) => (
+          <div key={category} className="mb-4">
+            <h3 className="text-lg font-medium text-gray-800 mb-2">{category}</h3>
+            <div className="flex flex-wrap">
+              {skillsInCategory.map((skill) => (
+                <button
+                  key={skill}
+                  onClick={() => handleSkillClick(skill)}
+                  className={`bg-gray-100 rounded-full px-3 py-1 m-1 text-gray-700 hover:bg-gray-200 hover:scale-105 transition-all duration-300 ${
+                    activeSkills.includes(skill) ? 'bg-blue-200' : ''
+                  }`}
+                >
+                  {skill}
+                </button>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
-      <div className="flex flex-wrap justify-center">
-        {skills[selectedCategory].map((skill) => (
-          <button
-            key={skill}
-            onClick={() => handleSkillClick(skill)}
-            className="bg-gray-100 rounded-full px-4 py-2 m-1 text-gray-700 hover:bg-gray-200 hover:scale-105 transition-all duration-300"
-          >
-            {skill}
-          </button>
-        ))}
-      </div>
-    </section>
+
+      {/* For small screens, show the overlay when isOpen is true */}
+      {isOpen && (
+        <div className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+          <div className="fixed inset-y-0 right-0 w-64 bg-white shadow-lg p-4 overflow-y-auto">
+            {/* Close button */}
+            <button
+              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
+              onClick={onClose}
+            >
+              <XIcon size={24} />
+            </button>
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Skills</h2>
+            {Object.entries(skills).map(([category, skillsInCategory]) => (
+              <div key={category} className="mb-4">
+                <h3 className="text-lg font-medium text-gray-800 mb-2">
+                  {category}
+                </h3>
+                <div className="flex flex-wrap">
+                  {skillsInCategory.map((skill) => (
+                    <button
+                      key={skill}
+                      onClick={() => {
+                        handleSkillClick(skill);
+                        onClose(); // Close the SkillsSection after clicking
+                      }}
+                      className={`bg-gray-100 rounded-full px-3 py-1 m-1 text-gray-700 hover:bg-gray-200 hover:scale-105 transition-all duration-300 ${
+                        activeSkills.includes(skill) ? 'bg-blue-200' : ''
+                      }`}
+                    >
+                      {skill}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

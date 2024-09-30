@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { HIGHLIGHT_PROJECT, GLOW_PAGE_BORDER } from './actionTypes';
+import { HIGHLIGHT_PROJECT, GLOW_PAGE_BORDER, SET_ACTIVE_SKILLS } from './actionTypes';
 
 const initialHighlightState = {
   highlightedProject: null,
@@ -7,6 +7,10 @@ const initialHighlightState = {
 
 const initialGlowState = {
   glowPageBorder: false,
+};
+
+const initialSkillsState = {
+  activeSkills: [],
 };
 
 const highlightReducer = (state = initialHighlightState, action) => {
@@ -27,9 +31,19 @@ const glowReducer = (state = initialGlowState, action) => {
   }
 };
 
+const skillsReducer = (state = initialSkillsState, action) => {
+  switch (action.type) {
+    case SET_ACTIVE_SKILLS:
+      return { ...state, activeSkills: action.payload };
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   highlight: highlightReducer,
   glow: glowReducer,
+  skills: skillsReducer,
 });
 
 export default rootReducer;
