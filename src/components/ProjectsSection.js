@@ -48,6 +48,26 @@ const ProjectsSection = () => {
           'Orchestrated an Ombi-integrated media server, automating over 1,000 weekly metadata-rich downloads using advanced scripting. Leveraged DHT protocols to index 10,000+ peer-to-peer assets, facilitating Radarr and Sonarr for automated content retrieval. Administered a robust NGINX server architecture, seamlessly streaming a 50 TB digital Blu-ray archive to 150+ users. Engineered multi-user profile management for 200+ accounts, ensuring optimal user engagement and platform reliability. Enhanced system resilience with SSH-powered Raspberry Pi commands, reducing downtime by 90% through proactive network management.',
         skills: ['Git'],
       },
+      {
+        title: 'Smart Mirror',
+        githubLink: 'https://github.com/arkb75/SmartMirror',
+        description:
+          'Designed and built an interactive smart mirror leveraging a Raspberry Pi 3 (Model B) and MagicMirror² software to display real-time information, including weather, time, and news updates. Developed the system on a Raspbian OS with a fully-customized user interface using HTML/CSS and JavaScript. Integrated API calls to dynamically fetch and display data, optimizing performance through Node.js and Python scripts. Engineered a secure and efficient hardware solution with a 3D-printed Raspberry Pi mount for a streamlined assembly. Reduced boot-up time by 30% through system optimizations and automated service start via systemd. Enhanced user interaction by deploying custom modules and designing a polished, minimalist UI.',
+        skills: [
+          'Python',
+          'JavaScript',
+          'Node.js',
+          'HTML/CSS',
+          'Git',
+          'Raspberry Pi',
+          'API Integration',
+          'Hardware Design',
+          '3D Printing',
+          'Linux',
+          'System Administration',
+          'UI/UX Design',
+        ],
+      },
     ],
     []
   );
