@@ -37,7 +37,7 @@ const Header = () => (
         <MailIcon size={28} />
       </a>
       <a
-        href="/Resume.pdf"
+        href="/resume"
         title="Resume"
         className="text-gray-600 hover:text-gray-900 transition-colors duration-300"
         target="_blank"
