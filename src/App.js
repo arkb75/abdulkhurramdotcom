@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Header from './components/Header';
 import Taskbar from './components/Taskbar';
@@ -7,28 +7,14 @@ import ProjectsSection from './components/ProjectsSection';
 import ResearchSection from './components/ResearchSection';
 import SkillsSection from './components/SkillsSection';
 
-import { MenuIcon } from 'lucide-react'; // Import an icon for the toggle button
+import { Code } from 'lucide-react';
 
 const App = () => {
-  // Refs for each project
-  const constructifyRef = useRef(null);
-  const realEstateRef = useRef(null);
-  const amazonRef = useRef(null);
-  const mediaRef = useRef(null);
-
   // Get the state from Redux
   const glowPageBorder = useSelector((state) => state.glow.glowPageBorder);
 
   // State to manage the visibility of the SkillsSection on small screens
   const [isSkillsOpen, setIsSkillsOpen] = useState(false);
-
-  // Pass refs as an object to the components
-  const projectRefs = {
-    constructifyRef,
-    realEstateRef,
-    amazonRef,
-    mediaRef,
-  };
 
   return (
     <div
@@ -37,25 +23,23 @@ const App = () => {
       }`}
     >
       <Taskbar />
-      <SkillsSection
-        projectRefs={projectRefs}
-        isOpen={isSkillsOpen}
-        onClose={() => setIsSkillsOpen(false)}
-      />
+      <SkillsSection isOpen={isSkillsOpen} onClose={() => setIsSkillsOpen(false)} />
       {/* Toggle Button for smaller screens */}
-      <button
-        className="lg:hidden fixed bottom-4 right-4 bg-white text-black p-3 rounded-full shadow-lg z-50"
-        onClick={() => setIsSkillsOpen(true)}
-      >
-        <MenuIcon size={24} />
-      </button>
+      {!isSkillsOpen && (
+        <button
+          className="lg:hidden fixed bottom-8 right-8 bg-white text-black p-4 rounded-full shadow-lg z-50 hover:bg-gray-100 transition-colors duration-300"
+          onClick={() => setIsSkillsOpen(true)}
+          aria-label="Open Skills"
+        >
+          <Code size={24} />
+        </button>
+      )}
       <div className="max-w-3xl mx-auto mt-16">
         <Header />
         <main className="space-y-12">
           <AboutMeSection />
-          <ProjectsSection projectRefs={projectRefs} />
+          <ProjectsSection />
           <ResearchSection />
-          {/* Removed SkillsSection from here */}
         </main>
       </div>
     </div>

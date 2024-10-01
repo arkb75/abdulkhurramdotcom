@@ -1,11 +1,9 @@
-// SkillsSection.js
-
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { highlightProject, glowPageBorder } from '../redux/actions';
-import { XIcon } from 'lucide-react'; // Import close icon
+import { X } from 'lucide-react';
 
-const SkillsSection = ({ projectRefs, isOpen, onClose }) => {
+const SkillsSection = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
 
   // Get the active skills from Redux
@@ -29,32 +27,32 @@ const SkillsSection = ({ projectRefs, isOpen, onClose }) => {
     Testing: ['Unit', 'Integration', 'End-to-End', 'Smoke', 'A/B'],
   };
 
-// Mapping of skills to projects (for click functionality)
-const skillToProjects = {
-    Java: [projectRefs.amazonRef],
-    Python: [projectRefs.constructifyRef],
-    JavaScript: [projectRefs.constructifyRef, projectRefs.realEstateRef],
+  // Mapping of skills to project titles
+  const skillToProjects = {
+    Java: ['Amazon Marketplace Analytic Software'],
+    Python: ['Constructify (W.I.P)'],
+    JavaScript: ['Constructify (W.I.P)', 'Real Estate Management Platform'],
     TypeScript: [],
     'C/C++': [],
     'C#': [],
-    SQL: [projectRefs.realEstateRef, projectRefs.amazonRef],
-    'HTML/CSS': [projectRefs.constructifyRef, projectRefs.realEstateRef],
-    'Node.js': [projectRefs.realEstateRef],
+    SQL: ['Real Estate Management Platform', 'Amazon Marketplace Analytic Software'],
+    'HTML/CSS': ['Constructify (W.I.P)', 'Real Estate Management Platform'],
+    'Node.js': ['Real Estate Management Platform'],
     'React.js': [], // Relevant to the site itself
     Redux: [], // Relevant to the site itself
-    'Vue.js': [projectRefs.constructifyRef],
-    'Express.js': [projectRefs.realEstateRef],
-    Django: [projectRefs.constructifyRef],
+    'Vue.js': ['Constructify (W.I.P)'],
+    'Express.js': ['Real Estate Management Platform'],
+    Django: ['Constructify (W.I.P)'],
     Git: [
-      projectRefs.constructifyRef,
-      projectRefs.realEstateRef,
-      projectRefs.amazonRef,
-      projectRefs.mediaRef,
+      'Constructify (W.I.P)',
+      'Real Estate Management Platform',
+      'Amazon Marketplace Analytic Software',
+      'High-Performance Media Distribution Platform',
     ],
-    OracleDB: [projectRefs.realEstateRef],
+    OracleDB: ['Real Estate Management Platform'],
     MySQL: [],
     JUnit: [],
-    RDBMS: [projectRefs.realEstateRef],
+    RDBMS: ['Real Estate Management Platform'],
     Unit: [],
     Integration: [],
     'End-to-End': [],
@@ -62,22 +60,19 @@ const skillToProjects = {
     'A/B': [],
   };
 
-  // Skills that should trigger the page outline glow
   const pageGlowSkills = ['React.js', 'Redux'];
 
   const handleSkillClick = (skill) => {
-    const projectRefsArray = skillToProjects[skill];
-    if (projectRefsArray && projectRefsArray.length > 0) {
-      // Scroll to the first relevant project
-      const projectRef = projectRefsArray[0];
-      if (projectRef.current) {
-        projectRef.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-        });
+    const projectsArray = skillToProjects[skill];
+    if (projectsArray && projectsArray.length > 0) {
+      const title = projectsArray[0];
+      const projectId = title.replace(/\s+/g, '-');
+      const projectElement = document.getElementById(projectId);
+      if (projectElement) {
+        projectElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-        // Highlight the project using Redux
-        dispatch(highlightProject(projectRef));
+        // Highlight the project
+        dispatch(highlightProject(title));
 
         // Remove highlight after 3 seconds
         setTimeout(() => {
@@ -88,7 +83,6 @@ const skillToProjects = {
 
     // Check if the skill should trigger the page outline glow
     if (pageGlowSkills.includes(skill)) {
-      // Trigger the page outline glow
       dispatch(glowPageBorder(true));
 
       // Remove the glow after a set duration
@@ -96,63 +90,76 @@ const skillToProjects = {
         dispatch(glowPageBorder(false));
       }, 3000);
     }
+
+    // Close the SkillsSection on small screens after clicking a skill
+    if (onClose) {
+      onClose();
+    }
   };
 
   return (
     <>
       {/* For large screens, show the fixed SkillsSection */}
       <div
-        className="hidden lg:block fixed top-20 right-4 w-64 bg-white rounded-2xl shadow-lg p-4
-        transform transition-transform duration-300 overflow-y-auto max-h-screen z-40"
+        className="hidden lg:block fixed top-20 right-4 w-64 bg-white rounded-2xl shadow-lg p-4 z-40"
       >
         <h2 className="text-xl font-semibold text-gray-900 mb-4">Skills</h2>
-        {Object.entries(skills).map(([category, skillsInCategory]) => (
-          <div key={category} className="mb-4">
-            <h3 className="text-lg font-medium text-gray-800 mb-2">{category}</h3>
-            <div className="flex flex-wrap">
-              {skillsInCategory.map((skill) => (
-                <button
-                  key={skill}
-                  onClick={() => handleSkillClick(skill)}
-                  className={`bg-gray-100 rounded-full px-3 py-1 m-1 text-gray-700 hover:bg-gray-200 hover:scale-105 transition-all duration-300 ${
-                    activeSkills.includes(skill) ? 'bg-blue-200' : ''
-                  }`}
-                >
-                  {skill}
-                </button>
-              ))}
+        <div
+          className="skills-list"
+          style={{ maxHeight: 'calc(100vh - 160px)', overflowY: 'auto' }}
+        >
+          {Object.entries(skills).map(([category, skillsInCategory]) => (
+            <div key={category} className="mb-6">
+              <h3 className="text-lg font-medium text-gray-800 mb-2">{category}</h3>
+              <div className="flex flex-wrap">
+                {skillsInCategory.map((skill) => (
+                  <button
+                    key={skill}
+                    onClick={() => handleSkillClick(skill)}
+                    className={`px-3 py-1 m-1 text-gray-700 rounded-full transition-colors duration-300 ${
+                      activeSkills.includes(skill)
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-gray-100 hover:bg-gray-200'
+                    }`}
+                  >
+                    {skill}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* For small screens, show the overlay when isOpen is true */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-50">
-          <div className="fixed inset-y-0 right-0 w-64 bg-white shadow-lg p-4 overflow-y-auto z-50">
+        <div
+          className="lg:hidden fixed inset-0 z-50 flex items-center justify-center"
+          style={{ backdropFilter: 'blur(4px)' }}
+        >
+          <div className="relative bg-white rounded-2xl p-6 shadow-lg w-11/12 max-h-[80vh] overflow-y-auto">
             {/* Close button */}
             <button
               className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
               onClick={onClose}
             >
-              <XIcon size={24} />
+              <X size={24} />
             </button>
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">Skills</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Skills</h2>
             {Object.entries(skills).map(([category, skillsInCategory]) => (
-              <div key={category} className="mb-4">
-                <h3 className="text-lg font-medium text-gray-800 mb-2">
+              <div key={category} className="mb-6">
+                <h3 className="text-lg font-medium text-gray-800 mb-2 text-center">
                   {category}
                 </h3>
-                <div className="flex flex-wrap">
+                <div className="flex flex-wrap justify-center">
                   {skillsInCategory.map((skill) => (
                     <button
                       key={skill}
-                      onClick={() => {
-                        handleSkillClick(skill);
-                        onClose(); // Close the SkillsSection after clicking
-                      }}
-                      className={`bg-gray-100 rounded-full px-3 py-1 m-1 text-gray-700 hover:bg-gray-200 hover:scale-105 transition-all duration-300 ${
-                        activeSkills.includes(skill) ? 'bg-blue-200' : ''
+                      onClick={() => handleSkillClick(skill)}
+                      className={`px-3 py-1 m-1 text-gray-700 rounded-full transition-colors duration-300 ${
+                        activeSkills.includes(skill)
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-100 hover:bg-gray-200'
                       }`}
                     >
                       {skill}

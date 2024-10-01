@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux';
-import { HIGHLIGHT_PROJECT, GLOW_PAGE_BORDER, SET_ACTIVE_SKILLS } from './actionTypes';
+import {
+  HIGHLIGHT_PROJECT,
+  GLOW_PAGE_BORDER,
+  SET_ACTIVE_SKILLS,
+} from './actionTypes';
 
 const initialHighlightState = {
   highlightedProject: null,
