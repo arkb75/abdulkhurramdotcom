@@ -1,10 +1,8 @@
-import React, { useEffect, useMemo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import ProjectCard from './ProjectCard';
-import { setActiveSkills } from '../redux/actions';
 
 const ProjectsSection = () => {
-  const dispatch = useDispatch();
   const highlightedProject = useSelector(
     (state) => state.highlight.highlightedProject
   );
@@ -49,7 +47,7 @@ const ProjectsSection = () => {
         skills: ['Git'],
       },
       {
-        title: 'Smart Mirror',
+        title: 'Smart Mirror (Grade 10 Personal Project)',
         githubLink: 'https://github.com/arkb75/SmartMirror',
         description:
           'Designed and built an interactive smart mirror leveraging a Raspberry Pi 3 (Model B) and MagicMirror² software to display real-time information, including weather, time, and news updates. Developed the system on a Raspbian OS with a fully-customized user interface using HTML/CSS and JavaScript. Integrated API calls to dynamically fetch and display data, optimizing performance through Node.js and Python scripts. Engineered a secure and efficient hardware solution with a 3D-printed Raspberry Pi mount for a streamlined assembly. Reduced boot-up time by 30% through system optimizations and automated service start via systemd. Enhanced user interaction by deploying custom modules and designing a polished, minimalist UI.',
@@ -72,36 +70,10 @@ const ProjectsSection = () => {
     []
   );
 
-  useEffect(() => {
-    const options = {
-      root: null,
-      threshold: 0.5, // Adjust threshold as needed
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const projectTitle = entry.target.getAttribute('data-title');
-        const project = projects.find((p) => p.title === projectTitle);
-        if (entry.isIntersecting && project) {
-          dispatch(setActiveSkills(project.skills));
-        }
-      });
-    }, options);
-
-    const projectElements = document.querySelectorAll('.project-card');
-
-    projectElements.forEach((element) => observer.observe(element));
-
-    // Cleanup
-    return () => {
-      observer.disconnect();
-    };
-  }, [dispatch, projects]);
-
   return (
     <section
       id="projects"
-      className="bg-white rounded-2xl shadow-lg p-8 mb-8"
+      className="bg-white rounded-2xl shadow-lg p-8 mb-8 transform hover:scale-105 transition-transform duration-300"
     >
       <h2 className="text-2xl font-semibold text-gray-900 mb-4">Projects</h2>
       <div className="space-y-4">
