@@ -7,54 +7,59 @@ import AboutMeSection from './components/AboutMeSection';
 import ProjectsSection from './components/ProjectsSection';
 import ResearchSection from './components/ResearchSection';
 import SkillsSection from './components/SkillsSection';
-import ResumeSelector from './components/ResumeSelector'; // Import the new component
+import ResumeSelector from './components/ResumeSelector';
 
 import { Code } from 'lucide-react';
 
 const App = () => {
-  // Get the state from Redux
   const glowPageBorder = useSelector((state) => state.glow.glowPageBorder);
-
-  // State to manage the visibility of the SkillsSection on small screens
   const [isSkillsOpen, setIsSkillsOpen] = useState(false);
 
   return (
     <Router>
       <div
-        className={`min-h-screen bg-gray-50 pt-12 px-4 sm:px-6 lg:px-8 font-sans transition-all duration-500 ${
+        className={`min-h-screen bg-gray-50 pt-12 px-4 sm:px-6 font-sans transition-all duration-500 ${
           glowPageBorder ? 'page-outline-glow' : ''
         }`}
       >
         <Taskbar />
-        <SkillsSection
-          isOpen={isSkillsOpen}
-          onClose={() => setIsSkillsOpen(false)}
-        />
+
         {/* Toggle Button for smaller screens */}
         {!isSkillsOpen && (
           <button
-            className="lg:hidden fixed bottom-8 right-8 bg-white text-black p-4 rounded-full shadow-lg z-50 hover:bg-gray-100 transition-colors duration-300"
+            className="xl:hidden fixed bottom-8 right-8 bg-white text-black p-4 rounded-full shadow-lg z-50 hover:bg-gray-100 transition-colors duration-300"
             onClick={() => setIsSkillsOpen(true)}
             aria-label="Open Skills"
           >
             <Code size={24} />
           </button>
         )}
-        <div className="max-w-3xl mx-auto mt-16">
-          <Header />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <main className="space-y-12">
-                  <AboutMeSection />
-                  <ProjectsSection />
-                  <ResearchSection />
-                </main>
-              }
-            />
-            <Route path="/resume" element={<ResumeSelector />} />
-          </Routes>
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 xl:grid-cols-[1fr_auto] max-w-7xl mx-auto mt-16">
+          {/* Main Content */}
+          <div className="max-w-3xl mx-auto">
+            <Header />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <main className="space-y-12">
+                    <AboutMeSection />
+                    <ProjectsSection />
+                    <ResearchSection />
+                  </main>
+                }
+              />
+              <Route path="/resume" element={<ResumeSelector />} />
+            </Routes>
+          </div>
+
+          {/* Skills Section */}
+          <SkillsSection
+            isOpen={isSkillsOpen}
+            onClose={() => setIsSkillsOpen(false)}
+          />
         </div>
       </div>
     </Router>

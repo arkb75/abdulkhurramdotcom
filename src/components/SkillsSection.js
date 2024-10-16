@@ -43,12 +43,12 @@ const SkillsSection = ({ isOpen, onClose }) => {
     Java: ['Amazon Marketplace Analytic Software'],
     Python: [
       'Constructify (W.I.P)',
-      'Smart Mirror',
+      'Smart Mirror (Grade 10 Personal Project)',
     ],
     JavaScript: [
       'Constructify (W.I.P)',
       'Real Estate Management Platform',
-      'Smart Mirror',
+      'Smart Mirror (Grade 10 Personal Project)',
     ],
     TypeScript: [],
     'C/C++': [],
@@ -60,11 +60,11 @@ const SkillsSection = ({ isOpen, onClose }) => {
     'HTML/CSS': [
       'Constructify (W.I.P)',
       'Real Estate Management Platform',
-      'Smart Mirror',
+      'Smart Mirror (Grade 10 Personal Project)',
     ],
     'Node.js': [
       'Real Estate Management Platform',
-      'Smart Mirror',
+      'Smart Mirror (Grade 10 Personal Project)',
     ],
     'React.js': [],
     Redux: [],
@@ -76,19 +76,19 @@ const SkillsSection = ({ isOpen, onClose }) => {
       'Real Estate Management Platform',
       'Amazon Marketplace Analytic Software',
       'High-Performance Media Distribution Platform',
-      'Smart Mirror',
+      'Smart Mirror (Grade 10 Personal Project)',
     ],
     OracleDB: ['Real Estate Management Platform'],
     MySQL: [],
     JUnit: [],
     RDBMS: ['Real Estate Management Platform'],
-    'Raspberry Pi': ['Smart Mirror'],
-    'API Integration': ['Smart Mirror'],
-    'Hardware Design': ['Smart Mirror'],
-    '3D Printing': ['Smart Mirror'],
-    Linux: ['Smart Mirror'],
-    'System Administration': ['Smart Mirror'],
-    'UI/UX Design': ['Smart Mirror'],
+    'Raspberry Pi': ['Smart Mirror (Grade 10 Personal Project)'],
+    'API Integration': ['Smart Mirror (Grade 10 Personal Project)'],
+    'Hardware Design': ['Smart Mirror (Grade 10 Personal Project)'],
+    '3D Printing': ['Smart Mirror (Grade 10 Personal Project)'],
+    Linux: ['Smart Mirror (Grade 10 Personal Project)'],
+    'System Administration': ['Smart Mirror (Grade 10 Personal Project)'],
+    'UI/UX Design': ['Smart Mirror (Grade 10 Personal Project)'],
     Unit: [],
     Integration: [],
     'End-to-End': [],
@@ -135,9 +135,9 @@ const SkillsSection = ({ isOpen, onClose }) => {
 
   return (
     <>
-      {/* For large screens, show the fixed SkillsSection */}
+      {/* For extra-large screens, show the fixed SkillsSection */}
       <div
-        className="hidden lg:block fixed top-20 right-4 w-64 bg-white rounded-2xl shadow-lg p-4 z-40"
+        className="hidden xl:block fixed top-20 right-0 w-64 bg-white rounded-2xl shadow-lg p-4 z-40"
       >
         <h2 className="text-xl font-semibold text-gray-900 mb-4">Skills</h2>
         <div
@@ -146,7 +146,9 @@ const SkillsSection = ({ isOpen, onClose }) => {
         >
           {Object.entries(skills).map(([category, skillsInCategory]) => (
             <div key={category} className="mb-6">
-              <h3 className="text-lg font-medium text-gray-800 mb-2">{category}</h3>
+              <h3 className="text-lg font-medium text-gray-800 mb-2">
+                {category}
+              </h3>
               <div className="flex flex-wrap">
                 {skillsInCategory.map((skill) => (
                   <button
@@ -170,7 +172,7 @@ const SkillsSection = ({ isOpen, onClose }) => {
       {/* For small screens, show the overlay when isOpen is true */}
       {isOpen && (
         <div
-          className="lg:hidden fixed inset-0 z-50 flex items-center justify-center"
+          className="xl:hidden fixed inset-0 z-50 flex items-center justify-center"
           style={{ backdropFilter: 'blur(4px)' }}
         >
           <div className="relative bg-white rounded-2xl p-6 shadow-lg w-11/12 max-h-[80vh] overflow-y-auto">
@@ -181,7 +183,9 @@ const SkillsSection = ({ isOpen, onClose }) => {
             >
               <X size={24} />
             </button>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Skills</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+              Skills
+            </h2>
             {Object.entries(skills).map(([category, skillsInCategory]) => (
               <div key={category} className="mb-6">
                 <h3 className="text-lg font-medium text-gray-800 mb-2 text-center">
