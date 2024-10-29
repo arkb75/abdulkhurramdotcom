@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import ProjectCard from './ProjectCard';
 
-const ProjectsSection = ({ setIsSkillsOpen }) => {
+const ProjectsSection = () => {
   const highlightedProject = useSelector(
     (state) => state.highlight.highlightedProject
   );
@@ -73,16 +73,15 @@ const ProjectsSection = ({ setIsSkillsOpen }) => {
   return (
     <section
       id="projects"
-      className="bg-white rounded-2xl shadow-lg p-8 mb-8 max-w-5xl mx-auto transform hover:scale-105 transition-transform duration-300 text-lg leading-relaxed"
+      className="bg-white rounded-2xl shadow-lg p-8 mb-8 transform hover:scale-105 transition-transform duration-300"
     >
-      <h2 className="text-3xl font-semibold text-gray-900 mb-4">Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <h2 className="text-2xl font-semibold text-gray-900 mb-4">Projects</h2>
+      <div className="space-y-4">
         {projects.map((project) => (
           <ProjectCard
             key={project.title}
             project={project}
             highlightedProject={highlightedProject}
-            setIsSkillsOpen={setIsSkillsOpen}
           />
         ))}
       </div>

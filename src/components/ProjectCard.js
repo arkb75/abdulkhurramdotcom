@@ -2,22 +2,26 @@ import React from 'react';
 import { GithubIcon } from 'lucide-react';
 import { useDispatch } from 'react-redux';
 import { highlightProject, setActiveSkills } from '../redux/actions';
+import useMediaQuery from '../hooks/useMediaQuery';
 
-const ProjectCard = ({ project, highlightedProject }) => {
+const ProjectCard = ({ project, highlightedProject, setIsSkillsOpen }) => {
   const dispatch = useDispatch();
   const isHighlighted = highlightedProject === project.title;
 
-  const handleMouseEnter = () => {
-    // Set active skills to this project's skills
+  // Detect if the screen width is less than 1280px (xl breakpoint)
+  const isSmallScreen = useMediaQuery('(max-width: 1279px)');
+
+  const handleInteraction = () => {
     dispatch(setActiveSkills(project.skills));
-    // Optionally, highlight this project
     dispatch(highlightProject(project.title));
+
+    if (isSmallScreen) {
+      setIsSkillsOpen(true);
+    }
   };
 
   const handleMouseLeave = () => {
-    // Reset active skills
     dispatch(setActiveSkills([]));
-    // Remove project highlight
     dispatch(highlightProject(null));
   };
 
@@ -26,10 +30,11 @@ const ProjectCard = ({ project, highlightedProject }) => {
       id={project.title.replace(/\s+/g, '-')}
       data-title={project.title}
       className={`project-card bg-gray-50 p-6 rounded-lg relative transition-all duration-300 transform hover:scale-105 ${
-        isHighlighted ? 'ring-4 ring-blue-500 shadow-xl' : ''
+        isHighlighted ? 'ring-4 ring-blue-500 shadow-xl' : 'shadow-md'
       }`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={!isSmallScreen ? handleInteraction : undefined}
+      onMouseLeave={!isSmallScreen ? handleMouseLeave : undefined}
+      onClick={isSmallScreen ? handleInteraction : undefined}
     >
       <div className="flex justify-between items-start">
         <h3 className="text-xl font-semibold text-gray-900">
@@ -46,7 +51,7 @@ const ProjectCard = ({ project, highlightedProject }) => {
           </a>
         )}
       </div>
-      <p className="text-gray-700 mt-4">{project.description}</p>
+      <p className="text-gray-700 mt-4 text-sm">{project.description}</p>
     </div>
   );
 };

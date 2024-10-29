@@ -38,7 +38,7 @@ const App = () => {
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 xl:grid-cols-[1fr_auto] max-w-7xl mx-auto mt-16">
           {/* Main Content */}
-          <div className="max-w-3xl mx-auto">
+          <div className="main-content max-w-3xl mx-auto">
             <Header />
             <Routes>
               <Route
@@ -46,7 +46,7 @@ const App = () => {
                 element={
                   <main className="space-y-12">
                     <AboutMeSection />
-                    <ProjectsSection />
+                    <ProjectsSection setIsSkillsOpen={setIsSkillsOpen} />
                     <ResearchSection />
                   </main>
                 }
