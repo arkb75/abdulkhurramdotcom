@@ -41,16 +41,14 @@ const SkillsSection = ({ isOpen, onClose }) => {
   // Mapping of skills to project titles
   const skillToProjects = {
     Java: ['Amazon Marketplace Analytic Software'],
-    Python: [
-      'Constructify (W.I.P)',
-      'Smart Mirror (Grade 10 Personal Project)',
-    ],
+    Python: ['Constructify (W.I.P)', 'Smart Mirror (Grade 10 Personal Project)'],
     JavaScript: [
       'Constructify (W.I.P)',
       'Real Estate Management Platform',
       'Smart Mirror (Grade 10 Personal Project)',
+      'InsightUBC - Dataset Manager',
     ],
-    TypeScript: [],
+    TypeScript: ['InsightUBC - Dataset Manager'],
     'C/C++': [],
     'C#': [],
     SQL: [
@@ -65,8 +63,11 @@ const SkillsSection = ({ isOpen, onClose }) => {
     'Node.js': [
       'Real Estate Management Platform',
       'Smart Mirror (Grade 10 Personal Project)',
+      'InsightUBC - Dataset Manager',
     ],
-    'React.js': [],
+    'React.js': [
+      'InsightUBC - Dataset Manager',
+    ],
     Redux: [],
     'Vue.js': ['Constructify (W.I.P)'],
     'Express.js': ['Real Estate Management Platform'],
@@ -83,7 +84,10 @@ const SkillsSection = ({ isOpen, onClose }) => {
     JUnit: [],
     RDBMS: ['Real Estate Management Platform'],
     'Raspberry Pi': ['Smart Mirror (Grade 10 Personal Project)'],
-    'API Integration': ['Smart Mirror (Grade 10 Personal Project)'],
+    'API Integration': [
+      'Smart Mirror (Grade 10 Personal Project)',
+      'InsightUBC - Dataset Manager',
+    ],
     'Hardware Design': ['Smart Mirror (Grade 10 Personal Project)'],
     '3D Printing': ['Smart Mirror (Grade 10 Personal Project)'],
     Linux: ['Smart Mirror (Grade 10 Personal Project)'],
@@ -134,84 +138,84 @@ const SkillsSection = ({ isOpen, onClose }) => {
   };
 
   return (
-    <>
-      {/* For extra-large screens, show the fixed SkillsSection */}
-      <div
-        className="hidden xl:block fixed top-20 right-0 w-64 bg-white rounded-2xl shadow-lg p-4 z-40"
-      >
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">Skills</h2>
+      <>
+        {/* For extra-large screens, show the fixed SkillsSection */}
         <div
-          className="skills-list"
-          style={{ maxHeight: 'calc(100vh - 160px)', overflowY: 'auto' }}
+            className="hidden xl:block fixed top-20 right-0 w-64 bg-white rounded-2xl shadow-lg p-4 z-40"
         >
-          {Object.entries(skills).map(([category, skillsInCategory]) => (
-            <div key={category} className="mb-6">
-              <h3 className="text-lg font-medium text-gray-800 mb-2">
-                {category}
-              </h3>
-              <div className="flex flex-wrap">
-                {skillsInCategory.map((skill) => (
-                  <button
-                    key={skill}
-                    onClick={() => handleSkillClick(skill)}
-                    className={`px-3 py-1 m-1 text-gray-700 rounded-full transition-colors duration-300 ${
-                      activeSkills.includes(skill)
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-gray-100 hover:bg-gray-200'
-                    }`}
-                  >
-                    {skill}
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* For small screens, show the overlay when isOpen is true */}
-      {isOpen && (
-        <div
-          className="xl:hidden fixed inset-0 z-50 flex items-center justify-center"
-          style={{ backdropFilter: 'blur(4px)' }}
-        >
-          <div className="relative bg-white rounded-2xl p-6 shadow-lg w-11/12 max-h-[80vh] overflow-y-auto">
-            {/* Close button */}
-            <button
-              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
-              onClick={onClose}
-            >
-              <X size={24} />
-            </button>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-              Skills
-            </h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">Skills</h2>
+          <div
+              className="skills-list"
+              style={{ maxHeight: 'calc(100vh - 160px)', overflowY: 'auto' }}
+          >
             {Object.entries(skills).map(([category, skillsInCategory]) => (
-              <div key={category} className="mb-6">
-                <h3 className="text-lg font-medium text-gray-800 mb-2 text-center">
-                  {category}
-                </h3>
-                <div className="flex flex-wrap justify-center">
-                  {skillsInCategory.map((skill) => (
-                    <button
-                      key={skill}
-                      onClick={() => handleSkillClick(skill)}
-                      className={`px-3 py-1 m-1 text-gray-700 rounded-full transition-colors duration-300 ${
-                        activeSkills.includes(skill)
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-100 hover:bg-gray-200'
-                      }`}
-                    >
-                      {skill}
-                    </button>
-                  ))}
+                <div key={category} className="mb-6">
+                  <h3 className="text-lg font-medium text-gray-800 mb-2">
+                    {category}
+                  </h3>
+                  <div className="flex flex-wrap">
+                    {skillsInCategory.map((skill) => (
+                        <button
+                            key={skill}
+                            onClick={() => handleSkillClick(skill)}
+                            className={`px-3 py-1 m-1 text-gray-700 rounded-full transition-colors duration-300 ${
+                                activeSkills.includes(skill)
+                                    ? 'bg-blue-500 text-white'
+                                    : 'bg-gray-100 hover:bg-gray-200'
+                            }`}
+                        >
+                          {skill}
+                        </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
             ))}
           </div>
         </div>
-      )}
-    </>
+
+        {/* For small screens, show the overlay when isOpen is true */}
+        {isOpen && (
+            <div
+                className="xl:hidden fixed inset-0 z-50 flex items-center justify-center"
+                style={{ backdropFilter: 'blur(4px)' }}
+            >
+              <div className="relative bg-white rounded-2xl p-6 shadow-lg w-11/12 max-h-[80vh] overflow-y-auto">
+                {/* Close button */}
+                <button
+                    className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
+                    onClick={onClose}
+                >
+                  <X size={24} />
+                </button>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+                  Skills
+                </h2>
+                {Object.entries(skills).map(([category, skillsInCategory]) => (
+                    <div key={category} className="mb-6">
+                      <h3 className="text-lg font-medium text-gray-800 mb-2 text-center">
+                        {category}
+                      </h3>
+                      <div className="flex flex-wrap justify-center">
+                        {skillsInCategory.map((skill) => (
+                            <button
+                                key={skill}
+                                onClick={() => handleSkillClick(skill)}
+                                className={`px-3 py-1 m-1 text-gray-700 rounded-full transition-colors duration-300 ${
+                                    activeSkills.includes(skill)
+                                        ? 'bg-blue-500 text-white'
+                                        : 'bg-gray-100 hover:bg-gray-200'
+                                }`}
+                            >
+                              {skill}
+                            </button>
+                        ))}
+                      </div>
+                    </div>
+                ))}
+              </div>
+            </div>
+        )}
+      </>
   );
 };
 
