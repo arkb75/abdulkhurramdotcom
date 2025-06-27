@@ -10,6 +10,13 @@ const ProjectsSection = ({ setIsSkillsOpen }) => {
   const projects = useMemo(
       () => [
       {
+          title: 'SoloPilot - AI Freelancer Pipeline',
+          githubLink: null,
+          description:
+              'Created a cost-efficient multi-agent platform that plans, codes, tests, deploys, and markets new services in <4 hours while keeping infra spend below $50 / month. Added a provider agnostic LLM layer with unified cost and latency logging, enabling one-line model swaps. Integrated real time quality gates (ruff, mypy, bandit, eslint) and SonarCloud checks during code generation. Integrate Notion MCP as a living roadmap—agents read / write tasks and milestones, giving the LLMs long-term memory that keeps multi-day plans grounded and on track.',
+          skills: ['Python', 'LangChain', 'ChromaDB', 'API Integration', 'AI/ML', 'DevOps'],
+      },
+      {
           title: 'InsightUBC - Dataset Manager',
           githubLink: 'https://github.com/arkb75/InsightUBC',
           description:
