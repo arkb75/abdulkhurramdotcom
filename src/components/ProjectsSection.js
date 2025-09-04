@@ -10,11 +10,11 @@ const ProjectsSection = ({ setIsSkillsOpen }) => {
   const projects = useMemo(
       () => [
       {
-          title: 'SoloPilot - AI Freelancer Pipeline',
-          githubLink: null,
+          title: 'SoloPilot — Client Ops Studio',
+          githubLink: 'https://github.com/arkb75/SoloPilot',
           description:
-              'Created a cost-efficient multi-agent platform that plans, codes, tests, deploys, and markets new services in <4 hours while keeping infra spend below $50 / month. Added a provider agnostic LLM layer with unified cost and latency logging, enabling one-line model swaps. Integrated real time quality gates (ruff, mypy, bandit, eslint) and SonarCloud checks during code generation. Integrate Notion MCP as a living roadmap—agents read / write tasks and milestones, giving the LLMs long-term memory that keeps multi-day plans grounded and on track.',
-          skills: ['Python', 'LangChain', 'ChromaDB', 'API Integration', 'AI/ML', 'DevOps'],
+              'Building a human-in-the-loop client ops studio for solo freelancers that unifies intake, planning, proposals, coding, QA, and delivery in one workspace. Shipped an email intake console and conversational manager that triages threads, captures scope, and renders versioned proposal PDFs with inline annotations and a revision loop. Improved intake copy quality with an evaluator that summarizes and scores drafts against a rubric, and a revisor agent that produces higher-scoring alternatives for side-by-side review. Unified AI and governance via a provider-agnostic LLM layer with centralized logging, a repo-aware coding/deployment agent, CI quality gates, and AWS-backed operations (SQS queues, versioned S3 storage, CloudWatch).',
+          skills: ['Python', 'TypeScript', 'Next.js', 'React', 'LangChain', 'AWS', 'S3', 'SQS', 'CloudWatch', 'CI/CD'],
       },
       {
           title: 'InsightUBC - Dataset Manager',
