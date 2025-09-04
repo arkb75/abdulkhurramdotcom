@@ -1,5 +1,5 @@
 import React from 'react';
-import { GithubIcon, LinkedinIcon, MailIcon, FileTextIcon } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, MailIcon, FileTextIcon, CalendarIcon } from 'lucide-react';
 
 const Header = () => (
   <header className="text-center mb-6">
@@ -44,6 +44,15 @@ const Header = () => (
         rel="noopener noreferrer"
       >
         <FileTextIcon size={28} />
+      </a>
+      <a
+        href="https://calendly.com/rafaykhurram/30min"
+        title="Book a chat"
+        className="text-gray-600 hover:text-gray-900 transition-colors duration-300"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <CalendarIcon size={28} />
       </a>
     </div>
   </header>
