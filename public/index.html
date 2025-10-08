@@ -25,6 +25,25 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Abdul Khurram</title>
+    <!-- Apollo website tracker -->
+    <script>
+      function initApollo() {
+        var n = Math.random().toString(36).substring(7);
+        var o = document.createElement("script");
+        o.src =
+          "https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache=" +
+          n;
+        o.async = !0;
+        o.defer = !0;
+        o.onload = function () {
+          window.trackingFunctions.onLoad({
+            appId: "67184eeb4f26d901b0be9e7f",
+          });
+        };
+        document.head.appendChild(o);
+      }
+      initApollo();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
