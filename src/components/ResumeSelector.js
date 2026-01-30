@@ -37,14 +37,8 @@ const ResumeSelector = () => {
             <option value="" disabled>
               -- Please choose an option --
             </option>
-            <option value="/Software Engineering & Systems Design">
-              Software Engineering & Systems Design
-            </option>
-            <option value="/Full-Stack & Web Development">
-              Full-Stack & Web Development
-            </option>
-            <option value="/Embedded Systems & IoT Development">
-              Embedded Systems & IoT Development
+            <option value="/Data-Infra-Security">
+              Data-Infra-Security
             </option>
             {}
             <option value="/Main">Main</option>
