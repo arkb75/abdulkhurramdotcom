@@ -1,26 +1,46 @@
 import React, { useState, useEffect } from 'react';
 
-const formatVersionName = (name) => {
-  return name
-    .replace(/^resume-/, '')  // Remove "resume-" prefix
+const GITHUB_REPO = 'arkb75/Resume';
+const BRANCHES_API = `https://api.github.com/repos/${GITHUB_REPO}/branches`;
+
+const formatVersionName = (branchName) => {
+  // Convert "resume/ai-platform" -> "AI Platform"
+  return branchName
+    .replace(/^resume\//, '')  // Remove "resume/" prefix
     .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 };
 
+const getResumeUrl = (branchName) => {
+  // Link directly to raw PDF on GitHub
+  return `https://raw.githubusercontent.com/${GITHUB_REPO}/${branchName}/main.pdf`;
+};
+
 const ResumeSelector = () => {
   const [selectedResume, setSelectedResume] = useState('');
-  const [versions, setVersions] = useState([]);
+  const [branches, setBranches] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('/resume-versions.json')
-      .then(res => res.json())
+    fetch(BRANCHES_API)
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch branches');
+        return res.json();
+      })
       .then(data => {
-        setVersions(data);
+        // Filter to only include resume/* branches
+        const resumeBranches = data
+          .map(b => b.name)
+          .filter(name => name.startsWith('resume/'));
+        setBranches(resumeBranches);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(err => {
+        setError(err.message);
+        setLoading(false);
+      });
   }, []);
 
   const handleChange = (e) => {
@@ -29,7 +49,7 @@ const ResumeSelector = () => {
 
   const handleViewResume = () => {
     if (selectedResume) {
-      window.open(`${selectedResume}/Resume.pdf`, '_blank');
+      window.open(getResumeUrl(selectedResume), '_blank');
     } else {
       alert('Please select a resume version.');
     }
@@ -52,11 +72,11 @@ const ResumeSelector = () => {
           disabled={loading}
         >
           <option value="" disabled>
-            {loading ? 'Loading versions...' : '-- Please choose an option --'}
+            {loading ? 'Loading versions...' : error ? 'Error loading versions' : '-- Please choose an option --'}
           </option>
-          {versions.map(version => (
-            <option key={version} value={`/${version}`}>
-              {formatVersionName(version)}
+          {branches.map(branch => (
+            <option key={branch} value={branch}>
+              {formatVersionName(branch)}
             </option>
           ))}
         </select>
@@ -64,7 +84,7 @@ const ResumeSelector = () => {
       <button
         onClick={handleViewResume}
         className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300"
-        disabled={loading}
+        disabled={loading || !!error}
       >
         View Resume
       </button>
