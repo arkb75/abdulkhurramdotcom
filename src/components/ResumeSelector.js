@@ -13,8 +13,9 @@ const formatVersionName = (branchName) => {
 };
 
 const getResumeUrl = (branchName) => {
-  // Link directly to raw PDF on GitHub
-  return `https://raw.githubusercontent.com/${GITHUB_REPO}/${branchName}/main.pdf`;
+  // Use Google Docs Viewer to display PDF in-browser (raw GitHub URLs trigger download)
+  const rawUrl = `https://raw.githubusercontent.com/${GITHUB_REPO}/${branchName}/main.pdf`;
+  return `https://docs.google.com/viewer?url=${encodeURIComponent(rawUrl)}&embedded=true`;
 };
 
 const ResumeSelector = () => {
