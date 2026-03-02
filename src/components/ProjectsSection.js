@@ -17,6 +17,13 @@ const ProjectsSection = ({ setIsSkillsOpen }) => {
           skills: ['Python', 'TypeScript', 'Next.js', 'React', 'LangChain', 'AWS', 'S3', 'SQS', 'CloudWatch', 'CI/CD'],
       },
       {
+          title: 'Backer',
+          githubLink: null,
+          description:
+              'Built at Hack The Coast 2026. A full-stack Next.js platform connecting startups with investors through a TikTok-style swipe feed. Architected a DynamoDB-backed data layer spanning 10+ tables with transactional writes powering feed, messaging, and investment workflows. Trained an XGBoost ranker scoring startups on 6 features (stage affinity, text similarity, tag overlap, popularity) from DynamoDB event streams. Implemented NextAuth middleware with role-based route guards and integrated S3 uploads, SES transactional emails, and multi-step founder/investor onboarding flows.',
+          skills: ['TypeScript', 'Next.js', 'React', 'AWS', 'DynamoDB', 'S3', 'SES', 'NextAuth', 'XGBoost', 'Python'],
+      },
+      {
           title: 'InsightUBC - Dataset Manager',
           githubLink: 'https://github.com/arkb75/InsightUBC',
           description:
