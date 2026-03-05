@@ -14,7 +14,7 @@ const formatVersionName = (branchName) => {
 
 const getResumeUrl = (branchName) => {
   // Use Google Docs Viewer to display PDF in-browser (raw GitHub URLs trigger download)
-  const rawUrl = `https://raw.githubusercontent.com/${GITHUB_REPO}/${branchName}/main.pdf`;
+  const rawUrl = `https://raw.githubusercontent.com/${GITHUB_REPO}/${branchName}/abdul_khurram_resume.pdf`;
   return `https://docs.google.com/viewer?url=${encodeURIComponent(rawUrl)}&embedded=true`;
 };
 
