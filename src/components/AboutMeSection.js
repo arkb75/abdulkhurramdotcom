@@ -46,12 +46,12 @@ const AboutMeSection = () => {
     >
       <h2 className="text-2xl font-semibold text-gray-900 mb-4">About Me</h2>
       <p className="text-gray-700">
-        As a Computer Science student at the University of British Columbia, I am passionate
-        about leveraging my technical skills to solve real-world problems. With a strong
-        foundation in software development and hands-on experience in various projects, I am
-        eager to contribute to innovative teams and learn from industry professionals. I am
-        actively seeking internship opportunities where I can apply my knowledge in software
-        engineering and grow my expertise in developing efficient, scalable solutions.
+        I am a UBC Computer Science student graduating in May 2027 and currently a Software
+        Engineer Intern at Shopify. Previously, I built data pipelines for ML and analytics
+        workloads at RBC and worked on AI systems and full-stack services at Contello.ai.
+        My projects span evidence-grounded AI workflows, data infrastructure, and full-stack
+        products. I am interested in new-grad software engineering roles where I can build
+        reliable systems and useful developer tools.
       </p>
     </section>
   );
