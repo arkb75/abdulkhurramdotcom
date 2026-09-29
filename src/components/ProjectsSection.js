@@ -10,82 +10,32 @@ const ProjectsSection = ({ setIsSkillsOpen }) => {
   const projects = useMemo(
     () => [
       {
+        title: 'Workbase',
+        githubLink: 'https://github.com/arkb75/Workbase',
+        description:
+          'A full-stack platform for turning technical work into reviewed career content. Imports GitHub repositories through OAuth, organizes repository evidence into work themes, and generates resume and profile artifacts from approved, non-sensitive claims. Built with Next.js, TypeScript, Prisma, and PostgreSQL, with bounded AI workflows and credential redaction.',
+        skills: ['TypeScript', 'Next.js', 'React', 'PostgreSQL', 'Prisma', 'GitHub OAuth', 'AI Workflows'],
+      },
+      {
         title: 'Backer',
         githubLink: 'https://github.com/arkb75/Backer',
         description:
-          'Built at Hack The Coast 2026. A full-stack Next.js platform connecting startups with investors through a TikTok-style swipe feed. Architected a DynamoDB-backed data layer spanning 10+ tables with transactional writes powering feed, messaging, and investment workflows. Trained an XGBoost ranker scoring startups on 6 features (stage affinity, text similarity, tag overlap, popularity) from DynamoDB event streams. Implemented NextAuth middleware with role-based route guards and integrated S3 uploads, SES transactional emails, and multi-step founder/investor onboarding flows.',
+          'Built at Hack The Coast 2026. A Next.js platform for startup discovery with a DynamoDB data layer spanning 10+ tables, transactional writes for feed and messaging workflows, and an XGBoost ranker trained on behavioral and similarity features.',
         skills: ['TypeScript', 'Next.js', 'React', 'AWS', 'DynamoDB', 'S3', 'SES', 'NextAuth', 'XGBoost', 'Python'],
       },
       {
         title: 'SoloPilot — Client Ops Studio',
         githubLink: 'https://github.com/arkb75/SoloPilot',
         description:
-          'Building a human-in-the-loop client ops studio for solo freelancers that unifies intake, planning, proposals, coding, QA, and delivery in one workspace. Shipped an email intake console and conversational manager that triages threads, captures scope, and renders versioned proposal PDFs with inline annotations and a revision loop. Improved intake copy quality with an evaluator that summarizes and scores drafts against a rubric, and a revisor agent that produces higher-scoring alternatives for side-by-side review. Unified AI and governance via a provider-agnostic LLM layer with centralized logging, a repo-aware coding/deployment agent, CI quality gates, and AWS-backed operations (SQS queues, versioned S3 storage, CloudWatch).',
+          'A client-ops workspace for solo freelancers, bringing intake, proposals, review, and delivery into one flow. Includes an email intake console, versioned proposal PDFs with annotations, and an evaluation and revision loop for proposal drafts.',
         skills: ['Python', 'TypeScript', 'Next.js', 'React', 'LangChain', 'AWS', 'S3', 'SQS', 'CloudWatch', 'CI/CD'],
       },
       {
         title: 'InsightUBC - Dataset Manager',
         githubLink: 'https://github.com/arkb75/InsightUBC',
         description:
-          'Developed a full-stack web application for managing and analyzing academic datasets, enabling users to upload, query, and visualize data through an intuitive React.js interface. Built interactive visualizations with Chart.js to highlight trends in course performance and student outcomes. Designed a modular REST API backend using Node.js and JSZip for efficient dataset handling. Implemented Mocha and Chai for rigorous backend testing, ensuring reliability and robustness.',
+          'A full-stack academic dataset manager with a React interface for uploading, querying, and visualizing course data, backed by a Node.js API.',
         skills: ['Typescript', 'React.js', 'Node.js', 'JavaScript', 'API Integration'],
-      },
-      {
-        title: 'Constructify (W.I.P)',
-        githubLink: 'https://github.com/arkb75/Constructify',
-        description:
-          'Built an A-Z home-building platform with transparent project tracking and a service provider marketplace, targeting aspiring homeowners and construction firms. Developed a responsive frontend using Vue.js and Vite, optimizing load times and performance. Plans to use Django for the backend to handle scalable data management. Designed an intuitive UI/UX through targeted user research and iterative testing, leading to a 25% reduction in user onboarding time.',
-        skills: ['Python', 'JavaScript', 'Vue.js', 'HTML/CSS', 'Git', 'Django'],
-      },
-      {
-        title: 'Real Estate Management Platform',
-        githubLink: 'https://github.com/arkb75/RealEstate',
-        description:
-          'Developed a platform for seamless real estate transactions and property management, integrating service providers like inspectors and contractors. Designed and implemented a SQL database with OracleDB to model classes, utilizing ISA relationships for efficient querying and data manipulation. Created and managed API endpoints with Express.js, ensuring asynchronous processing to handle multi-user requests and streamline property listing management.',
-        skills: [
-          'JavaScript',
-          'Node.js',
-          'Express.js',
-          'SQL',
-          'OracleDB',
-          'HTML/CSS',
-          'Git',
-        ],
-      },
-      {
-        title: 'Amazon Marketplace Analytic Software',
-        githubLink:
-          'https://github.com/arkb75/Amazon-Marketplace-Analytic-Software',
-        description:
-          'Engineered an Amazon Marketplace tool using Java, enhancing seller operational efficiency by 35%. Implemented an algorithm predicting ASIN trends, leading to a 50% reduction in overstock. Enabled multi-format data integration, including SQL and JSON, improving data retrieval times by 40%.',
-        skills: ['Java', 'SQL', 'Git'],
-      },
-      {
-        title: 'High-Performance Media Distribution Platform',
-        githubLink: null,
-        description:
-          'Orchestrated an Ombi-integrated media server, automating over 1,000 weekly metadata-rich downloads using advanced scripting. Leveraged DHT protocols to index 10,000+ peer-to-peer assets, facilitating Radarr and Sonarr for automated content retrieval. Administered a robust NGINX server architecture, seamlessly streaming a 50 TB digital Blu-ray archive to 150+ users. Engineered multi-user profile management for 200+ accounts, ensuring optimal user engagement and platform reliability. Enhanced system resilience with SSH-powered Raspberry Pi commands, reducing downtime by 90% through proactive network management.',
-        skills: ['Git'],
-      },
-      {
-        title: 'Smart Mirror (Grade 10 Personal Project)',
-        githubLink: 'https://github.com/arkb75/SmartMirror',
-        description:
-          'Designed and built an interactive smart mirror leveraging a Raspberry Pi 3 (Model B) and MagicMirror² software to display real-time information, including weather, time, and news updates. Developed the system on a Raspbian OS with a fully-customized user interface using HTML/CSS and JavaScript. Integrated API calls to dynamically fetch and display data, optimizing performance through Node.js and Python scripts. Engineered a secure and efficient hardware solution with a 3D-printed Raspberry Pi mount for a streamlined assembly. Reduced boot-up time by 30% through system optimizations and automated service start via systemd. Enhanced user interaction by deploying custom modules and designing a polished, minimalist UI.',
-        skills: [
-          'Python',
-          'JavaScript',
-          'Node.js',
-          'HTML/CSS',
-          'Git',
-          'Raspberry Pi',
-          'API Integration',
-          'Hardware Design',
-          '3D Printing',
-          'Linux',
-          'System Administration',
-          'UI/UX Design',
-        ],
       },
     ],
     []
