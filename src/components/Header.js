@@ -12,7 +12,7 @@ const Header = () => (
     </div>
     <h1 className="text-5xl font-bold text-gray-900 mb-2">Abdul Rafay Khurram</h1>
     <p className="text-xl text-gray-600">
-      UBC Computer Science Student & Aspiring Software Engineer
+      Software Engineer Intern at Shopify · UBC CS, May 2027
     </p>
     <div className="flex justify-center space-x-6 mt-4">
       <a
